@@ -14,23 +14,29 @@
 <style type="text/css">
 
 body {
+
+  width:50%;
+
   /* 画像ファイルの指定 */
-  background-image: url(image/bg.png);
+  background: url(image/bg.png) 0 0 no-repeat;
    
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
-   
-  /* 画像をタイル状に繰り返し表示しない */
-  background-repeat: no-repeat;
-   
+    
   /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
   background-attachment: fixed;
    
   /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-  background-size: cover;
-   
+  background-size:cover;
+     
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #ffffff;
+  
+}
+body::before{
+  content: '';
+  display:block;
+  padding-top:50%;
 }
 
 input[type=radio]:focus {
@@ -49,7 +55,16 @@ background-size:100%;
 background-position: bottom center;
 -webkit-tap-highlight-color: rgba(0,0,0,0);
 }*/
+input[type=radio] {
+border: 0px;
+width: X;
+height: X;
+}
 
+.button {
+margin-left: 30%;
+margin-top: 20%;
+}
 small, small * {
   font-size:11.5px;
 }
