@@ -2,9 +2,6 @@
 <html>
 <head>
 
-<!--CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<!--JS -->
 <!--bootstrapとJQuery-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -12,31 +9,70 @@
 <title>ラヂオボタン</title>
 
 <style type="text/css">
-
-body {
-
-  width:50%;
-
-  /* 画像ファイルの指定 */
-  background: url(image/bg.png) 0 0 no-repeat;
-   
+*, *:after, *:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+* {margin:0;padding:0;border: 0 none;position: relative;}
+ 
+html {
+  background: url(image/bg2.jpg) 0 0 no-repeat ;
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
-    
+   
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+   
   /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
   background-attachment: fixed;
    
   /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-  background-size:cover;
-     
+  background-size: cover;
+   
   /* 背景画像が読み込まれる前に表示される背景のカラー */
-  background-color: #ffffff;
-  
+  background-color: #464646;
 }
+body {
+  width: 100%;
+  min-height: 100%;
+  background: inherit;
+  overflow: hidden;
+}
+
+article {
+  background: inherit;
+  position: relative;
+  width: 300px;
+  margin: 10vh auto 15vh;
+  border-radius: 15px;
+  border: 10px solid rgba(255,255,255,.15);
+  box-shadow: 1px 1px 4px rgba(0,0,0,.3);
+  z-index: 5;
+  font-size: 1.5rem;
+}
+article:before {
+  content: '';
+  position: absolute;
+  top: 0; left:0; right:0; bottom:0;
+  background: inherit;
+  filter: blur(5px);
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: url(#blur);filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='6');
+}
+ 
+svg {
+  height:0;
+  width: 0;
+  position: absolute;
+}
+
 body::before{
   content: '';
   display:block;
-  padding-top:50%;
+  padding-top:10%;
 }
 
 input[type=radio]:focus {
@@ -46,51 +82,19 @@ input[type=radio]:focus {
 input[type=radio]:focus:checked{
   box-shadow:none;
 }
-/*
-body {
-min-height:100%;
-height:100vh;
-background: url('bg.png') no-repeat;
-background-size:100%;
-background-position: bottom center;
--webkit-tap-highlight-color: rgba(0,0,0,0);
-}*/
+
 input[type=radio] {
 border: 0px;
 width: X;
 height: X;
 }
 
-.button {
-margin-left: 30%;
-margin-top: 20%;
-}
-small, small * {
-  font-size:11.5px;
-}
 .slogan{
   font-size: 13px;
   color: rgba(0,0,0, .3);
 }
-.example{
-  float:none;
-  width:90%;
-  max-width: 450px;
-  margin:0 auto;
-  display: inline-block;
-  box-shadow: 0 3px 30px rgba(0,0,0, .2);
-  border-radius: 10px ;
-}
-pre {
-  color:white;
-  max-width: 300px;
-  float: none;
-  border-radius:2px;
 
-  padding: 5px 0;
-  box-shadow: 0 1px 1px rgba(0,0,0, .1) inset;
-  text-align: center;
-}
+
 .bg-red{
   background-color: #ff0011;
 }
@@ -99,7 +103,7 @@ pre {
 }
 input[type="radio"]{
   margin-right:3px;
-  margin-left:-3px;
+  margin-left: 0px;
   position: relative;
 }
 label {
@@ -180,72 +184,85 @@ label {
  * Thu Sep 15 2016
  */
 @-webkit-keyframes tremolo{0%{-webkit-transform:translateY(.5px) translateX(-.5px) scale(1) skewY(1deg) skewX(-1deg);transform:translateY(.5px) translateX(-.5px) scale(1) skewY(1deg) skewX(-1deg)}50%{-webkit-transform:translateX(0) translateY(0) scale(1.1) skewY(0) skewX(0);transform:translateX(0) translateY(0) scale(1.1) skewY(0) skewX(0)}90%{-webkit-transform:translateY(-.5px) translateX(.5px) scale(1) skewY(1deg) skewX(-1deg);transform:translateY(-.5px) translateX(.5px) scale(1) skewY(1deg) skewX(-1deg)}100%{-webkit-transform:none;transform:none}}@keyframes tremolo{0%{-webkit-transform:translateY(.5px) translateX(-.5px) scale(1) skewY(1deg) skewX(-1deg);transform:translateY(.5px) translateX(-.5px) scale(1) skewY(1deg) skewX(-1deg)}50%{-webkit-transform:translateX(0) translateY(0) scale(1.1) skewY(0) skewX(0);transform:translateX(0) translateY(0) scale(1.1) skewY(0) skewX(0)}90%{-webkit-transform:translateY(-.5px) translateX(.5px) scale(1) skewY(1deg) skewX(-1deg);transform:translateY(-.5px) translateX(.5px) scale(1) skewY(1deg) skewX(-1deg)}100%{-webkit-transform:none;transform:none}}.radiobox-tremolo:checked{-webkit-animation:tremolo 65ms linear;animation:tremolo 65ms linear;-webkit-animation-iteration-count:7;animation-iteration-count:7}
+
+
+
+.container {text-align: center;}	
 </style>
 </head>
 
 <body>
+    <article>
+        <ul class="container">
+			<h1>Choose Channel</h1>
+            <div class="button">
+             <input name="checkit" type="radio" onclick="a1()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a2()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a3()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a4()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a5()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a6()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a7()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a8()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a9()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a10()" class="radiobox-tremolo"> <br>
+             <input name="checkit" type="radio" onclick="a11()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a12()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a13()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a14()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a15()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a16()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a17()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a18()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a19()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a20()" class="radiobox-tremolo"> <br>
+             <input name="checkit" type="radio" onclick="a21()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a22()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a23()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a24()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a25()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a26()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a27()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a28()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a29()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a30()" class="radiobox-tremolo"> <br>
+             <input name="checkit" type="radio" onclick="a31()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a32()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a33()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a34()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a35()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a36()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a37()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a38()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a39()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a40()" class="radiobox-tremolo"> <br>
+             <input name="checkit" type="radio" onclick="a41()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a42()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a43()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a44()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a45()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a46()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a47()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a48()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a49()" class="radiobox-tremolo">
+             <input name="checkit" type="radio" onclick="a50()" class="radiobox-tremolo"> <br>
+            </div>
+        </ul>
+      </article>
+         
+        <svg version="1.1" xmlns='http://www.w3.org/2000/svg'>
+         <filter id='blur'>
+           <feGaussianBlur stdDeviation='6' />
+           </filter>
+        </svg>
 
-ラヂオボタン<br>
 
 <audio id="music" preload="none">
   <!--autoplay onコントローラーなし-->
   <source src="http://37.220.36.53:7904/;?type=http&amp;nocache=18236" type="audio/mpeg">
 </audio>
 
-<ul class="container">
-<div class="button">
- <input name="checkit" type="radio" onclick="a1()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a2()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a3()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a4()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a5()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a6()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a7()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a8()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a9()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a10()" class="radiobox-tremolo"> <br>
- <input name="checkit" type="radio" onclick="a11()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a12()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a13()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a14()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a15()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a16()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a17()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a18()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a19()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a20()" class="radiobox-tremolo"> <br>
- <input name="checkit" type="radio" onclick="a21()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a22()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a23()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a24()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a25()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a26()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a27()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a28()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a29()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a30()" class="radiobox-tremolo"> <br>
- <input name="checkit" type="radio" onclick="a31()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a32()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a33()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a34()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a35()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a36()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a37()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a38()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a39()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a40()" class="radiobox-tremolo"> <br>
- <input name="checkit" type="radio" onclick="a41()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a42()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a43()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a44()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a45()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a46()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a47()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a48()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a49()" class="radiobox-tremolo">
- <input name="checkit" type="radio" onclick="a50()" class="radiobox-tremolo"> <br>
-</div>
-</ul>
+
 
 <script>
     var ch=[
